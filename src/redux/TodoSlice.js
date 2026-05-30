@@ -14,6 +14,10 @@ const TodoSlice = createSlice({
     addTask: (state, data) => {
       const currTask = data.payload;
       state.todoList.push(currTask);
+      state.inputValue = "";
     },
   },
 });
+
+export const { setInputValue, addTask } = TodoSlice.actions;
+export default TodoSlice.reducer;
