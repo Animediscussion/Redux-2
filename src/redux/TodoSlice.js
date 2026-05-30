@@ -4,6 +4,16 @@ const TodoSlice = createSlice({
   name: "TodoSlice",
   initialState: {
     inputValue: "",
-    TodoList: [],
+    todoList: [],
+  },
+  reducers: {
+    setInputValue: (state, data) => {
+      console.log(data.payload);
+      state.inputValue = data.payload;
+    },
+    addTask: (state, data) => {
+      const currTask = data.payload;
+      state.todoList.push(currTask);
+    },
   },
 });
