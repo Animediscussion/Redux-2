@@ -42,6 +42,7 @@ const User = () => {
 
   return (
     <>
+      {heading}
       <h4>Name: {user.name}</h4>
       <h4>Name: {user.phone}</h4>
     </>
