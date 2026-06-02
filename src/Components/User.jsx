@@ -23,8 +23,29 @@ const User = () => {
     abc();
   }, []);
   const heading = <h2>User Example</h2>;
+  if (loading) {
+    return (
+      <>
+        {heading}
+        <h3>....Loading</h3>
+      </>
+    );
+  }
+  if (error) {
+    return (
+      <>
+        {heading}
+        <h3>Error occurred</h3>
+      </>
+    );
+  }
 
-  return <div>User</div>;
+  return (
+    <>
+      <h4>Name: {user.name}</h4>
+      <h4>Name: {user.phone}</h4>
+    </>
+  );
 };
 
 export default User;
