@@ -6,8 +6,15 @@ export const fetchUserMiddleware = (param) => {
     return async (dispatch) => {
       if (!param) return;
       try {
+        dispatch(userLoading());
+        const response = await fetch(
+          `https://jsonplaceholder.typicode.com/users/${param}`,
+        );
+        if (!response.ok) {
+          throw new Error("User not found");
+        }
       } catch (err) {
-        dispatch();
+        dispatch(userError());
       } finally {
       }
     };
