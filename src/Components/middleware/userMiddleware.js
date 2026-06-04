@@ -13,6 +13,8 @@ export const fetchUserMiddleware = (param) => {
         if (!response.ok) {
           throw new Error("User not found");
         }
+        const user = await response.json();
+        dispatch(userData(user));
       } catch (err) {
         dispatch(userError());
       } finally {
