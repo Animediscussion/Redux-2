@@ -1,23 +1,32 @@
 import React, { use, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { fetchUserMiddleware } from "./middleware/userMiddleware";
+import userSlice from "../redux/userSlice";
+
+const { getParam } = userSlice.actions;
 
 const userRedux = () => {
   const dispatch = useDispatch();
-  useDispatch();
   const { loading, error, user, param } = useSelector(
     (store) => store.userState,
   );
-
-  const [value, setValue] = useState("");
 
   useEffect(() => {
     if (param) {
       dispatch(fetchUserMiddleware(param));
     }
-  }, [param, dispatch]);
+  }, [param]);
 
-  const heading = <h2>User Example</h2>;
+  const heading = (
+    <>
+      <h2>User Example</h2>
+      <input
+        type="text"
+        value={param}
+        onChange={(e) => dispatch(getParam(e.target.value))}
+      />
+    </>
+  );
   if (loading) {
     return (
       <>
