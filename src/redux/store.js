@@ -10,3 +10,4 @@ const store = configureStore({
     userState: userSlice,
   },
 });
+export default store;

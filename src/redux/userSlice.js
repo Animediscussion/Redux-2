@@ -1,11 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
+
 const userSlice = createSlice({
   name: "user",
   initialState: {
     user: null,
     error: false,
-    loading: true,
-    param = null,
+    loading: false,
+    param: null,
   },
   reducers: {
     userLoading: (state) => {
@@ -15,17 +16,16 @@ const userSlice = createSlice({
     userError: (state) => {
       state.error = true;
       state.loading = false;
-      },
-      userData: (state, action) => {
-          state.loading = false;
-          state.user = action.payload;
-      },
-      getParam: (state, action) => {
-          state.param = action.payload;
-      }
+    },
+    userData: (state, action) => {
+      state.loading = false;
+      state.user = action.payload;
+    },
+    getParam: (state, action) => {
+      state.param = action.payload;
+    },
   },
 });
 
 export const { userLoading, userError, userData, getParam } = userSlice.actions;
 export default userSlice.reducer;
-

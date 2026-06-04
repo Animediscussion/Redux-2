@@ -1,11 +1,11 @@
 import React, { use, useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { fetchUserMiddleware } from "./middleware/userMiddleware";
 import userSlice from "../redux/userSlice";
+import { getParam } from "../redux/userSlice";
 
-const { getParam } = userSlice.actions;
-
-const userRedux = () => {
+const UserRedux = () => {
   const dispatch = useDispatch();
   const { loading, error, user, param } = useSelector(
     (store) => store.userState,
@@ -52,4 +52,4 @@ const userRedux = () => {
   );
 };
 
-export default userRedux;
+export default UserRedux;
