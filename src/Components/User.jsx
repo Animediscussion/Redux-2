@@ -4,6 +4,7 @@ const User = () => {
   const [user, setUser] = useState(null);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [val, setVal] = useState("");
   useEffect(function () {
     async function abc() {
       try {
@@ -22,7 +23,12 @@ const User = () => {
     }
     abc();
   }, []);
-  const heading = <h2>User Example</h2>;
+  const heading = (
+    <div>
+      <h2>User Example</h2>
+      <input type="text" value={val} onChange={(e) => setVal(e.target.value)} />
+    </div>
+  );
   if (loading) {
     return (
       <>
