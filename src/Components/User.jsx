@@ -5,24 +5,27 @@ const User = () => {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
   const [val, setVal] = useState("");
-  useEffect(function () {
-    async function abc() {
-      try {
-        setLoading(true);
-        const resp = await fetch(
-          "https://jsonplaceholder.typicode.com/users/1",
-        );
-        const user = await resp.json();
-        console.log("user", user);
-        setUser(user);
-      } catch (err) {
-        setError(true);
-      } finally {
-        setLoading(false);
+  useEffect(
+    function () {
+      async function abc() {
+        try {
+          setLoading(true);
+          const resp = await fetch(
+            `https://jsonplaceholder.typicode.com/users/${val}`,
+          );
+          const user = await resp.json();
+          console.log("user", user);
+          setUser(user);
+        } catch (err) {
+          setError(true);
+        } finally {
+          setLoading(false);
+        }
       }
-    }
-    abc();
-  }, []);
+      abc();
+    },
+    [val],
+  );
   const heading = (
     <div>
       <h2>User Example</h2>
